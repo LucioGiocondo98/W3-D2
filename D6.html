@@ -63,7 +63,11 @@
 
     <div>
       <p>Anche questo testo è per gli esercizi</p>
-      <h2 id="changeMyColor" style="color: #ff00d6">
+      <h2
+        id="changeMyColor"
+        style="color: #ff00d6"
+        onclick="changeColorWithRandom"
+      >
         Apri questa pagina con VSCode per scoprire gli esercizi
       </h2>
     </div>
@@ -118,8 +122,8 @@
       const changeUrls = function () {
         const changePropertyOfH = document.querySelectorAll("a");
         console.log(changePropertyOfH);
-        for (let i = 0; i < changePropertyOfH - 1; i++) {
-          changePropertyOfH[0].setAttribute("href", "https://www.google.com");
+        for (let i = 0; i < changePropertyOfH.length; i++) {
+          changePropertyOfH[i].setAttribute("href", "https://www.google.com");
         }
         console.log([changePropertyOfH]);
       };
@@ -131,13 +135,10 @@
       const addToTheSecond = function () {
         const newElementList = document.getElementById("secondList");
         console.log(newElementList);
-        const newItemList = document.querySelector("ul li");
-        console.log(newItemList);
         const newList = document.createElement("li");
         newList.innerText = "Nuovo";
         console.log(newList);
-        newItemList.appendChild(newList);
-        console.log(newItemList);
+        newElementList.appendChild(newList);
       };
       addToTheSecond();
       /* ESERCIZIO 6
@@ -214,8 +215,15 @@
       /* EXTRA ESERCIZIO 15
           Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
         */
-
-      const changeColorWithRandom = function () {};
+      const changeColorWithRandom = function () {
+        const colorChanger = document.getElementById("changeMyColor");
+        const randomColor = `rgb(${Math.floor(
+          Math.random() * 256
+        )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+          Math.random() * 256
+        )})`;
+        colorChanger.style.color = randomColor;
+      };
     </script>
   </body>
 </html>
